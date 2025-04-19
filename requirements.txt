@@ -1,0 +1,10 @@
+Flask
+tensorflow
+numpy
+pandas
+openpyxl
+scikit-learn
+Pillow
+matplotlib
+requests
+Werkzeug

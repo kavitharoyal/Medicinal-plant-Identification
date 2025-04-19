@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - GreenGuide</title>
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #28a745 !important;
+            width: 100%;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .result-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .result-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .result-card h2 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .result-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .result-card ul li {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .result-card ul li strong {
+            color: #28a745;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">GreenGuide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result-card">
+            <!-- Display the uploaded image -->
+            <h3>Uploaded Image:</h3>
+            <img src="{{ url_for('static', filename='uploads/' + image_filename) }}" alt="Uploaded Image" class="img-fluid">
+
+            <!-- Display the predicted plant name -->
+            <h2>Predicted Plant: <span class="text-success">{{ plant_name }}</span></h2>
+
+            <!-- Display plant details -->
+            <ul>
+                <li><strong>Scientific Name:</strong> {{ plant_details.get('Scientific_name', 'N/A') }}</li>
+                <li><strong>Telugu Name:</strong> {{ plant_details.get('Telugu_name', 'N/A') }}</li>
+                <li><strong>Parts Used:</strong> {{ plant_details.get('Parts_used', 'N/A') }}</li>
+                <li><strong>Uses:</strong> {{ plant_details.get('Uses', 'N/A') }}</li>
+                <li><strong>Grown Area:</strong> {{ plant_details.get('Grown_Area', 'N/A') }}</li>
+                <li><strong>Preparation Method (English):</strong> {{ plant_details.get('Preparation_method', 'N/A') }}</li>
+                <li><strong>Preparation Method (Telugu):</strong> {{ plant_details.get('Preparation_method(Telugu)', 'N/A') }}</li>
+            </ul>
+
+            <!-- Button to upload another image -->
+            <a href="/" class="btn btn-primary">Upload Another Image</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 GreenGuide. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
